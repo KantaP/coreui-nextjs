@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import Loadable from 'react-loadable';
-
+// import Loadable from 'react-loadable';
+import dynamic from 'next/dynamic'
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
-const DefaultLayout = () => (
-  <div>
-    test
-  </div>
-)
 
 
 // Containers
-const DefaultLayoutWithLoadable = Loadable({
-  loader: () => DefaultLayout,
-  loading
-});
+const DefaultLayoutWithDynamic = dynamic(
+  import('../components/Home'),
+  {
+    loading: loading
+  }
+)
 
-export default DefaultLayout;
+export default DefaultLayoutWithDynamic;
